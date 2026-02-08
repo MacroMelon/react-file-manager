@@ -166,7 +166,7 @@ const useFileList = (onRefresh, enableFilePreview, triggerAction, permissions, o
       icon: <FaRegPaste size={18} />,
       onClick: handleFilePasting,
       className: `${clipBoard ? "" : "disable-paste"}`,
-      hidden: !lastSelectedFile?.isDirectory || (!permissions.move && !permissions.copy),
+      hidden: !lastSelectedFile?.isDirectory || (!permissions.move && !permissions.copy) || !permissions.paste,
       divider: true,
     },
     {
