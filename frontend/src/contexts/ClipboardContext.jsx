@@ -4,9 +4,14 @@ import { validateApiCallback } from "../utils/validateApiCallback";
 
 const ClipBoardContext = createContext();
 
-export const ClipBoardProvider = ({ children, onPaste, onCut, onCopy }) => {
-  const [clipBoard, setClipBoard] = useState(null);
+export const ClipBoardProvider = ({ children, onPaste, onCut, onCopy, externalClipBoard }) => {
+  let [clipBoard, setClipBoard] = useState(null);
   const { selectedFiles, setSelectedFiles } = useSelection();
+
+  if (externalClipBoard) {
+    clipBoard = externalClipBoard.clipBoard;
+    setClipBoard = externalClipBoard.setClipBoard;
+  }
 
   const handleCutCopy = (isMoving) => {
     setClipBoard({

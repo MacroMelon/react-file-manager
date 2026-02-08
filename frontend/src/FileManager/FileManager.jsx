@@ -48,6 +48,7 @@ const FileManager = ({
   width = "100%",
   initialPath = "",
   filePreviewComponent,
+  externalClipBoard = {},
   primaryColor = "#6155b4",
   fontFamily = "Nunito Sans, sans-serif",
   language = "en-US",
@@ -89,7 +90,7 @@ const FileManager = ({
               onSelect={onSelect}
               onSelectionChange={onSelectionChange}
             >
-              <ClipBoardProvider onPaste={onPaste} onCut={onCut} onCopy={onCopy}>
+              <ClipBoardProvider onPaste={onPaste} onCut={onCut} onCopy={onCopy} externalClipBoard={externalClipBoard}>
                 <LayoutProvider layout={layout}>
                   <Toolbar
                     onLayoutChange={onLayoutChange}

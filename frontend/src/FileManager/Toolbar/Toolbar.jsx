@@ -43,7 +43,7 @@ const Toolbar = ({ onLayoutChange, onRefresh, triggerAction, permissions }) => {
     {
       icon: <FaRegPaste size={18} />,
       text: t("paste"),
-      permission: !!clipBoard,
+      permission: (!!clipBoard && permissions.paste),
       onClick: handleFilePasting,
     },
   ];
@@ -91,7 +91,7 @@ const Toolbar = ({ onLayoutChange, onRefresh, triggerAction, permissions }) => {
                 <span>{t("copy")}</span>
               </button>
             )}
-            {clipBoard?.files?.length > 0 && (
+            {clipBoard?.files?.length > 0 && permissions.paste && (
               <button
                 className="item-action file-action"
                 onClick={handleFilePasting}
